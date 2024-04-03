@@ -2,6 +2,11 @@ import UserModel from './user.model.js';
 import jwt from 'jsonwebtoken';
 import UserRepository from './user.repository.js';
 import bcrypt from 'bcrypt';
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const SECRET_KEY = process.env.JWT_SECRET;
 
 export default class UserController {
 
@@ -64,7 +69,7 @@ export default class UserController {
     userID: user._id,
     email: user.email,
   },
-  'AIb6d35fvJM4O9pXqXQNla2jBCH9kuLz',
+  SECRET_KEY,
   {
     expiresIn: '1h',
   }
